@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using FreshMvvm;
+using FreshN1.PageModels;
 using Xamarin.Forms;
 
 namespace FreshN1
@@ -11,20 +8,9 @@ namespace FreshN1
     {
         public App()
         {
-            // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            var contactList = FreshPageModelResolver.ResolvePageModel<ContactListPageModel>();
+            var navContainer = new FreshNavigationContainer(contactList);
+            MainPage = navContainer;
         }
 
         protected override void OnStart()
