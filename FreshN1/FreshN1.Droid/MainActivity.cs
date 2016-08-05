@@ -1,10 +1,6 @@
-﻿using System;
-
+﻿using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
 namespace FreshN1.Droid
@@ -16,7 +12,9 @@ namespace FreshN1.Droid
         {
             base.OnCreate(bundle);
 
+            UserDialogs.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
             LoadApplication(new App());
         }
     }

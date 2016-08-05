@@ -1,5 +1,7 @@
-﻿using FreshMvvm;
+﻿using Acr.UserDialogs;
+using FreshMvvm;
 using FreshN1.PageModels;
+using FreshN1.Services;
 using Xamarin.Forms;
 
 namespace FreshN1
@@ -8,9 +10,18 @@ namespace FreshN1
     {
         public App()
         {
+            this.SetupIoc();
+
             var contactList = FreshPageModelResolver.ResolvePageModel<ContactListPageModel>();
             var navContainer = new FreshNavigationContainer(contactList);
-            MainPage = navContainer;
+
+            this.MainPage = navContainer;
+        }
+
+        private void SetupIoc()
+        {
+            FreshIOC.Container.Register<IDataService, DataService>();
+            FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
         }
 
         protected override void OnStart()

@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using Acr.UserDialogs;
 using FreshMvvm;
 using FreshN1.Models;
+using FreshN1.Services;
 
 namespace FreshN1.PageModels
 {
     public class ContactListPageModel : FreshBasePageModel
     {
+        private readonly IDataService _dataService;
+        private readonly IUserDialogs _userDialogs;
+
         public List<Contact> ContactList { get; set; }
 
         public Contact SelectedContact
@@ -18,15 +23,19 @@ namespace FreshN1.PageModels
             }
         }
 
-        public override void Init(object initData)
+        public ContactListPageModel(IDataService dataService,
+            IUserDialogs userDialogs)
+        {
+            _dataService = dataService;
+            _userDialogs = userDialogs;
+        }
+
+        public override async void Init(object initData)
         {
             base.Init(initData);
-
-            this.ContactList = new List<Contact>
-            {
-                new Contact {Name="Peter", Number="01772409099" },
-                new Contact {Name="james", Number="01772789069" }
-            };
+            _userDialogs.ShowLoading();
+            this.ContactList = await _dataService.GetContacts();
+            _userDialogs.HideLoading();
         }
     }
 }
