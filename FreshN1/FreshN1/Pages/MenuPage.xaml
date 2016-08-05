@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreshN1.Pages.ContactListPage"
-             Title="Contact List">
+             x:Class="FreshN1.Pages.MenuPage"
+             Title="Menu">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding ContactList}" SelectedItem="{Binding SelectedContact}">
+        <ListView ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedMenuItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Number}"></TextCell>
+                    <TextCell Text="{Binding .}"></TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

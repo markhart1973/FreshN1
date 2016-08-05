@@ -6,7 +6,8 @@ using FreshN1.Services;
 
 namespace FreshN1.PageModels
 {
-    public class ContactListPageModel : FreshBasePageModel
+    public class ContactListPageModel :
+        FreshBasePageModel
     {
         private readonly IDataService _dataService;
         private readonly IUserDialogs _userDialogs;

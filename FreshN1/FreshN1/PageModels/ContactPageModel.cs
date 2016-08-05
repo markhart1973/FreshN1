@@ -4,7 +4,8 @@ using FreshN1.Models;
 
 namespace FreshN1.PageModels
 {
-    public class ContactPageModel : FreshBasePageModel
+    public class ContactPageModel :
+        FreshBasePageModel
     {
         public Contact Contact { get; set; }
 
